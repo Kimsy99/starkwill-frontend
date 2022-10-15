@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   Bars3BottomLeftIcon,
@@ -12,6 +12,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { useAccount,useConnectors } from '@starknet-react/core'
 
 const navigation = [
 
@@ -20,9 +21,7 @@ const navigation = [
   { name: 'Inheritance', href: '/inheritance', icon: UsersIcon, current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Sign out', href: '#' }
 ]
 
 function classNames(...classes: any) {
@@ -34,7 +33,13 @@ type SideBarProps = {
 }
 export default function SideBar({children}: SideBarProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { account, address, status } = useAccount()
+  const { connect, connectors, disconnect } = useConnectors()
 
+  const short = useMemo(() => {
+    if (!address) return ''
+    return `${address.slice(0, 6)}...${address.slice(-4)}`
+  }, [address])
   return (
     <>
       {/*
@@ -190,13 +195,23 @@ export default function SideBar({children}: SideBarProps) {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none">
+                      {
+                        status === 'disconnected' ? (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap' onClick={() => connect(connectors[0])}>
+                            Connect {connectors[0].id()}
+                        </div>) : 
+                        (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap'>
+                        {short}
+                        </div> 
+                        )
+                      }
                       <span className="sr-only">Open user menu</span>
-                      <img
+                    
+                      {/* <img
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
-                      />
+                      /> */}
                     </Menu.Button>
                   </div>
                   <Transition
@@ -212,15 +227,15 @@ export default function SideBar({children}: SideBarProps) {
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
-                            <a
-                              href={item.href}
+                            <div
+                            onClick={disconnect}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
                               {item.name}
-                            </a>
+                            </div>
                           )}
                         </Menu.Item>
                       ))}
