@@ -21,7 +21,7 @@ const navigation = [
   { name: 'Inheritance', href: '/inheritance', icon: UsersIcon, current: false },
 ]
 const userNavigation = [
-  { name: 'Sign out', href: '#' }
+  { name: 'Disconnect'}
 ]
 
 function classNames(...classes: any) {
@@ -195,24 +195,24 @@ export default function SideBar({children}: SideBarProps) {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none">
+                    
                       {
                         status === 'disconnected' ? (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap' onClick={() => connect(connectors[0])}>
                             Connect {connectors[0].id()}
                         </div>) : 
-                        (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap'>
+                        (<Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none"><div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap'>
                         {short}
-                        </div> 
+                        </div> <span className="sr-only">Open user menu</span></Menu.Button>
                         )
                       }
-                      <span className="sr-only">Open user menu</span>
+                      
                     
                       {/* <img
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       /> */}
-                    </Menu.Button>
+                    
                   </div>
                   <Transition
                     as={Fragment}
@@ -248,9 +248,7 @@ export default function SideBar({children}: SideBarProps) {
 
           <main className="flex-1">
             <div className="py-6">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-                <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-              </div>
+             
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                 {/* Replace with your content */}
                 {children}

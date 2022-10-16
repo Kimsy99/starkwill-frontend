@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import FromTest from '../components/forms.component'
 import SideBar from '../components/SideBar.component'
 import styles from '../styles/Home.module.css'
 
@@ -16,7 +17,8 @@ const Home: NextPage = () => {
       <main>
         {/* <SideBar/> */}
         
-        <h1>sdfa+</h1>
+        {/* <h1>sdfa+</h1> */}
+        <FromTest />
       </main>
 
       {/* <footer className={styles.footer}>
