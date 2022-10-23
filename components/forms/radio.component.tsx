@@ -19,6 +19,6 @@ export const RadioBtn = ({ lists }: RadioBtnListProps) => <div className="mt-4 s
         <label htmlFor={item.id} className="ml-3 block text-sm font-medium text-gray-700">
             {item.label}
         </label>
-     </div> 
+    </div> 
     ))}
 </div>
