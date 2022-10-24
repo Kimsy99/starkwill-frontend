@@ -4,7 +4,7 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 import InheritanceForm from '../inheritanceForms.component'
 
 type ModalProps = {
-    open: Boolean | undefined;
+    open: boolean | undefined;
     onClose: () => void;
 }
 

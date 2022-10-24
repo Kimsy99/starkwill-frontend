@@ -9,7 +9,7 @@ type RadioBtnListProps = {
 
 export const RadioBtn = ({ lists }: RadioBtnListProps) => <div className="mt-4 space-y-4">
     {lists.map((item) => (
-       <div className="flex items-center">
+       <div className="flex items-center" key={item.id}>
         <input
             id={item.id}
             name={item.name}

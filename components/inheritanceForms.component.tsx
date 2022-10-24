@@ -10,8 +10,8 @@ type BeneficiaryInfo = {
   proportion: number;
 }
 type BeneficiaryProps = {
-  info: BeneficiaryInfo;
   index: number;
+  info: BeneficiaryInfo;
   onChange: (i: any, e: any) => void;
   addBeneficiaries: () => void;
   removeBeneficiaries: (i: any) => void;
@@ -63,8 +63,10 @@ export default function InheritanceForm() {
   const [beneficiaries, setBeneficiaries] = React.useState([{address: "", proportion: 0}])
   const addBenficiaries = () => setBeneficiaries([...beneficiaries, {address: "", proportion: 0}])
   const onChange = (i: any, e: any): void => {
-    let tempBeneficiaries = [...beneficiaries]
-    tempBeneficiaries[i][e.target.name] = e.target.value;
+    let tempBeneficiaries = [...beneficiaries];
+    const index: keyof BeneficiaryInfo = i;
+    // const name: keyof BeneficiaryInfo = e.target.name;
+    tempBeneficiaries[index][e.target.name] = e.target.value;
     setBeneficiaries(tempBeneficiaries)
     console.log(e.target.value)
   }
@@ -74,9 +76,7 @@ export default function InheritanceForm() {
   }
   const removeBeneficiaries = (i: any) => {
     let tempBeneficiaries = [...beneficiaries];
-    // console.log("before", tempBeneficiaries)
     tempBeneficiaries.splice(i,1)
-    // console.log("after", tempBeneficiaries)
     setBeneficiaries(tempBeneficiaries)
   }
     return (
@@ -97,7 +97,7 @@ export default function InheritanceForm() {
                 Beneficiaries
               </label>
                 {beneficiaries.map((info, index) => (
-                  <BeneficiaryFormList info={info} index={index} onChange={onChange} addBeneficiaries={addBeneficiaries} removeBeneficiaries={removeBeneficiaries} />
+                  <BeneficiaryFormList key={index} info={info} index={index} onChange={onChange} addBeneficiaries={addBeneficiaries} removeBeneficiaries={removeBeneficiaries} />
                 ))}
             </div>
           </div>
