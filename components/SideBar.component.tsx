@@ -14,6 +14,8 @@ import {
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { useAccount,useConnectors } from '@starknet-react/core'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
@@ -32,6 +34,7 @@ type SideBarProps = {
     children: JSX.Element
 }
 export default function SideBar({children}: SideBarProps) {
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { account, address, status } = useAccount()
   const { connect, connectors, disconnect } = useConnectors()
@@ -103,27 +106,36 @@ export default function SideBar({children}: SideBarProps) {
                   </div>
                   <div className="mt-5 h-0 flex-1 overflow-y-auto">
                     <nav className="space-y-1 px-2">
-                      {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                          )}
-                        >
-                          <item.icon
+                      {navigation.map((item) => {
+                        const ariaCurrent =
+                          router.asPath.includes(item.href) && item.href !== "/"
+                            ? true
+                            : router.pathname === item.href
+                              ? true
+                              : false;
+                        console.log(item.href + ": " + ariaCurrent)
+                        return (
+                          <Link href={item.href}>
+                          <a
+                            key={item.name}
                             className={classNames(
-                              item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                              'mr-4 flex-shrink-0 h-6 w-6'
+                              ariaCurrent
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                             )}
-                            aria-hidden="true"
-                          />
-                          {item.name}
-                        </a>
-                      ))}
+                          >
+                            <item.icon
+                              className={classNames(
+                                ariaCurrent ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                                'mr-4 flex-shrink-0 h-6 w-6'
+                              )}
+                              aria-hidden="true"
+                            />
+                            {item.name}
+                          </a>
+                          </Link>
+                      )})}
                     </nav>
                   </div>
                 </Dialog.Panel>
@@ -144,25 +156,35 @@ export default function SideBar({children}: SideBarProps) {
             </div>
             <div className="flex flex-1 flex-col overflow-y-auto">
               <nav className="flex-1 space-y-1 px-2 py-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                    )}
-                  >
-                    <item.icon
+                {navigation.map((item) => {
+                  const ariaCurrent =
+                  router.asPath.includes(item.href) && item.href !== "/"
+                    ? true
+                    : router.pathname === item.href
+                      ? true
+                      : false;
+                  return (
+                  
+                    <Link href={item.href}>
+                    <a
+                      key={item.name}
+                      
                       className={classNames(
-                        item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-3 flex-shrink-0 h-6 w-6'
+                        ariaCurrent? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                       )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </a>
-                ))}
+                    >
+                      <item.icon
+                        className={classNames(
+                          ariaCurrent ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                          'mr-3 flex-shrink-0 h-6 w-6'
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </a>
+                      </Link>
+                )})}
               </nav>
             </div>
           </div>
