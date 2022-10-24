@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import { SectionDescription } from '../../components/forms/sectionDescription.component'
-import { SectionTitle } from '../../components/forms/sectionTitle.component'
-import List from '../../components/list'
-import Modal from '../../components/modal/index.component'
-import Heading from '../../components/Text/heading.component'
+import { SectionDescription } from '../../src/components/forms/sectionDescription.component'
+import { SectionTitle } from '../../src/components/forms/sectionTitle.component'
+import List from '../../src/components/list'
+import Modal from '../../src/components/modal/index.component'
+import Heading from '../../src/components/Text/heading.component'
 
 const InheritanceHome: NextPage = () => {
     const [open, setOpen] = React.useState(false)

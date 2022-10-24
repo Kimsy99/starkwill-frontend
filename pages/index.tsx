@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import InheritanceForm from '../components/inheritanceForms.component'
-import Modal from '../components/modal/index.component'
-import SideBar from '../components/SideBar.component'
-import Heading from '../components/Text/heading.component'
+import InheritanceForm from '../src/components/inheritanceForms.component'
+import Modal from '../src/components/modal/index.component'
+import SideBar from '../src/components/SideBar.component'
+import Heading from '../src/components/Text/heading.component'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {

@@ -65,7 +65,6 @@ export default function InheritanceForm() {
   const onChange = (i: any, e: any): void => {
     let tempBeneficiaries = [...beneficiaries];
     const index: keyof BeneficiaryInfo = i;
-    // const name: keyof BeneficiaryInfo = e.target.name;
     tempBeneficiaries[index][e.target.name] = e.target.value;
     setBeneficiaries(tempBeneficiaries)
     console.log(e.target.value)

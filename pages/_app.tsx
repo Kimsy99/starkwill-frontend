@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import SideBar from '../components/SideBar.component'
+import SideBar from '../src/components/SideBar.component'
 import { StarknetConfig, InjectedConnector } from '@starknet-react/core'
 
 function MyApp({ Component, pageProps }: AppProps) {
