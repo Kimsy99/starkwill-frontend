@@ -1,0 +1,426 @@
+[
+    {
+      "name": "CallArray",
+      "size": 4,
+      "type": "struct",
+      "members": [
+        {
+          "name": "to",
+          "type": "felt",
+          "offset": 0
+        },
+        {
+          "name": "selector",
+          "type": "felt",
+          "offset": 1
+        },
+        {
+          "name": "data_offset",
+          "type": "felt",
+          "offset": 2
+        },
+        {
+          "name": "data_len",
+          "type": "felt",
+          "offset": 3
+        }
+      ]
+    },
+    {
+      "data": [
+        {
+          "name": "new_signer",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "signer_changed",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "new_guardian",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "guardian_changed",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "new_guardian",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "guardian_backup_changed",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "active_at",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "escape_guardian_triggered",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "active_at",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "escape_signer_triggered",
+      "type": "event"
+    },
+    {
+      "data": [],
+      "keys": [],
+      "name": "escape_canceled",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "new_guardian",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "guardian_escaped",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "new_signer",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "signer_escaped",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "account",
+          "type": "felt"
+        },
+        {
+          "name": "key",
+          "type": "felt"
+        },
+        {
+          "name": "guardian",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "account_created",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "new_implementation",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "account_upgraded",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "hash",
+          "type": "felt"
+        },
+        {
+          "name": "response_len",
+          "type": "felt"
+        },
+        {
+          "name": "response",
+          "type": "felt*"
+        }
+      ],
+      "keys": [],
+      "name": "transaction_executed",
+      "type": "event"
+    },
+    {
+      "name": "initialize",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "signer",
+          "type": "felt"
+        },
+        {
+          "name": "guardian",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "__execute__",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "call_array_len",
+          "type": "felt"
+        },
+        {
+          "name": "call_array",
+          "type": "CallArray*"
+        },
+        {
+          "name": "calldata_len",
+          "type": "felt"
+        },
+        {
+          "name": "calldata",
+          "type": "felt*"
+        },
+        {
+          "name": "nonce",
+          "type": "felt"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "retdata_size",
+          "type": "felt"
+        },
+        {
+          "name": "retdata",
+          "type": "felt*"
+        }
+      ]
+    },
+    {
+      "name": "upgrade",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "implementation",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "change_signer",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "new_signer",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "change_guardian",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "new_guardian",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "change_guardian_backup",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "new_guardian",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "trigger_escape_guardian",
+      "type": "function",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "trigger_escape_signer",
+      "type": "function",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "cancel_escape",
+      "type": "function",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "escape_guardian",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "new_guardian",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "escape_signer",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "new_signer",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "get_latest_tx_timestamp",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "timestamp",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "is_valid_signature",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "hash",
+          "type": "felt"
+        },
+        {
+          "name": "sig_len",
+          "type": "felt"
+        },
+        {
+          "name": "sig",
+          "type": "felt*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "is_valid",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "supportsInterface",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "interfaceId",
+          "type": "felt"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "get_nonce",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "nonce",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "get_signer",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "signer",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "get_guardian",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "guardian",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "get_guardian_backup",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "guardian_backup",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "get_escape",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "active_at",
+          "type": "felt"
+        },
+        {
+          "name": "type",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "name": "get_version",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "version",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    }
+  ]

@@ -106,7 +106,7 @@ export default function SideBar({children}: SideBarProps) {
                   </div>
                   <div className="mt-5 h-0 flex-1 overflow-y-auto">
                     <nav className="space-y-1 px-2">
-                      {navigation.map((item) => {
+                      {navigation.map((item, index) => {
                         const ariaCurrent =
                           router.asPath.includes(item.href) && item.href !== "/"
                             ? true
@@ -115,7 +115,7 @@ export default function SideBar({children}: SideBarProps) {
                               : false;
                         console.log(item.href + ": " + ariaCurrent)
                         return (
-                          <Link href={item.href}>
+                          <Link href={item.href} key={index}>
                           <a
                             key={item.name}
                             className={classNames(
@@ -156,7 +156,7 @@ export default function SideBar({children}: SideBarProps) {
             </div>
             <div className="flex flex-1 flex-col overflow-y-auto">
               <nav className="flex-1 space-y-1 px-2 py-4">
-                {navigation.map((item) => {
+                {navigation.map((item, index) => {
                   const ariaCurrent =
                   router.asPath.includes(item.href) && item.href !== "/"
                     ? true
@@ -165,7 +165,7 @@ export default function SideBar({children}: SideBarProps) {
                       : false;
                   return (
                   
-                    <Link href={item.href}>
+                    <Link href={item.href} key={index}>
                     <a
                       key={item.name}
                       
