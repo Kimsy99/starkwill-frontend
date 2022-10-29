@@ -1,275 +1,275 @@
 [
-    {
-      "name": "UninitializedSplit",
-      "size": 3,
-      "type": "struct",
-      "members": [
-        {
-          "name": "beneficiary",
-          "type": "felt",
-          "offset": 0
-        },
-        {
-          "name": "token",
-          "type": "felt",
-          "offset": 1
-        },
-        {
-          "name": "percentage",
-          "type": "felt",
-          "offset": 2
-        }
-      ]
-    },
-    {
-      "name": "Signature",
-      "size": 2,
-      "type": "struct",
-      "members": [
-        {
-          "name": "r",
-          "type": "felt",
-          "offset": 0
-        },
-        {
-          "name": "s",
-          "type": "felt",
-          "offset": 1
-        }
-      ]
-    },
-    {
-      "name": "Split",
-      "size": 5,
-      "type": "struct",
-      "members": [
-        {
-          "name": "beneficiary",
-          "type": "felt",
-          "offset": 0
-        },
-        {
-          "name": "token",
-          "type": "felt",
-          "offset": 1
-        },
-        {
-          "name": "percentage",
-          "type": "felt",
-          "offset": 2
-        },
-        {
-          "name": "expected_amount",
-          "type": "Uint256",
-          "offset": 3
-        }
-      ]
-    },
-    {
-      "name": "Uint256",
-      "size": 2,
-      "type": "struct",
-      "members": [
-        {
-          "name": "low",
-          "type": "felt",
-          "offset": 0
-        },
-        {
-          "name": "high",
-          "type": "felt",
-          "offset": 1
-        }
-      ]
-    },
-    {
-      "data": [
-        {
-          "name": "timestamp",
-          "type": "felt"
-        }
-      ],
-      "keys": [],
-      "name": "activation_start",
-      "type": "event"
-    },
-    {
-      "data": [
-        {
-          "name": "timestamp",
-          "type": "felt"
-        }
-      ],
-      "keys": [],
-      "name": "activation_rejected",
-      "type": "event"
-    },
-    {
-      "data": [
-        {
-          "name": "id",
-          "type": "felt"
-        }
-      ],
-      "keys": [],
-      "name": "split_claimed",
-      "type": "event"
-    },
-    {
-      "name": "constructor",
-      "type": "constructor",
-      "inputs": [
-        {
-          "name": "owner",
-          "type": "felt"
-        },
-        {
-          "name": "activation_period",
-          "type": "felt"
-        },
-        {
-          "name": "threshold",
-          "type": "felt"
-        },
-        {
-          "name": "governors_pk_len",
-          "type": "felt"
-        },
-        {
-          "name": "governors_pk",
-          "type": "felt*"
-        },
-        {
-          "name": "splits_len",
-          "type": "felt"
-        },
-        {
-          "name": "splits",
-          "type": "UninitializedSplit*"
-        }
-      ],
-      "outputs": []
-    },
-    {
-      "name": "start_activation",
-      "type": "function",
-      "inputs": [
-        {
-          "name": "signatures_len",
-          "type": "felt"
-        },
-        {
-          "name": "signatures",
-          "type": "Signature*"
-        }
-      ],
-      "outputs": []
-    },
-    {
-      "name": "stop_activation",
-      "type": "function",
-      "inputs": [],
-      "outputs": []
-    },
-    {
-      "name": "claim_split",
-      "type": "function",
-      "inputs": [
-        {
-          "name": "id",
-          "type": "felt"
-        }
-      ],
-      "outputs": []
-    },
-    {
-      "name": "get_splits_id_of",
-      "type": "function",
-      "inputs": [
-        {
-          "name": "address",
-          "type": "felt"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "res_len",
-          "type": "felt"
-        },
-        {
-          "name": "res",
-          "type": "felt*"
-        }
-      ],
-      "stateMutability": "view"
-    },
-    {
-      "name": "split_of",
-      "type": "function",
-      "inputs": [
-        {
-          "name": "id",
-          "type": "felt"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "res",
-          "type": "Split"
-        }
-      ],
-      "stateMutability": "view"
-    },
-    {
-      "name": "inheritance_status",
-      "type": "function",
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "status",
-          "type": "felt"
-        }
-      ],
-      "stateMutability": "view"
-    },
-    {
-      "name": "total_splits",
-      "type": "function",
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "res",
-          "type": "felt"
-        }
-      ],
-      "stateMutability": "view"
-    },
-    {
-      "name": "get_activation_period",
-      "type": "function",
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "res",
-          "type": "felt"
-        }
-      ],
-      "stateMutability": "view"
-    },
-    {
-      "name": "get_all_splits",
-      "type": "function",
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "splits_len",
-          "type": "felt"
-        },
-        {
-          "name": "splits",
-          "type": "Split*"
-        }
-      ],
-      "stateMutability": "view"
-    }
-  ]
+  {
+    "name": "UninitializedSplit",
+    "size": 3,
+    "type": "struct",
+    "members": [
+      {
+        "name": "beneficiary",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "token",
+        "type": "felt",
+        "offset": 1
+      },
+      {
+        "name": "percentage",
+        "type": "felt",
+        "offset": 2
+      }
+    ]
+  },
+  {
+    "name": "Signature",
+    "size": 2,
+    "type": "struct",
+    "members": [
+      {
+        "name": "r",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "s",
+        "type": "felt",
+        "offset": 1
+      }
+    ]
+  },
+  {
+    "name": "Split",
+    "size": 5,
+    "type": "struct",
+    "members": [
+      {
+        "name": "beneficiary",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "token",
+        "type": "felt",
+        "offset": 1
+      },
+      {
+        "name": "percentage",
+        "type": "felt",
+        "offset": 2
+      },
+      {
+        "name": "expected_amount",
+        "type": "Uint256",
+        "offset": 3
+      }
+    ]
+  },
+  {
+    "name": "Uint256",
+    "size": 2,
+    "type": "struct",
+    "members": [
+      {
+        "name": "low",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "high",
+        "type": "felt",
+        "offset": 1
+      }
+    ]
+  },
+  {
+    "data": [
+      {
+        "name": "timestamp",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "activation_start",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "timestamp",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "activation_rejected",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "id",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "split_claimed",
+    "type": "event"
+  },
+  {
+    "name": "constructor",
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "owner",
+        "type": "felt"
+      },
+      {
+        "name": "activation_period",
+        "type": "felt"
+      },
+      {
+        "name": "threshold",
+        "type": "felt"
+      },
+      {
+        "name": "governors_pk_len",
+        "type": "felt"
+      },
+      {
+        "name": "governors_pk",
+        "type": "felt*"
+      },
+      {
+        "name": "splits_len",
+        "type": "felt"
+      },
+      {
+        "name": "splits",
+        "type": "UninitializedSplit*"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "start_activation",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "signatures_len",
+        "type": "felt"
+      },
+      {
+        "name": "signatures",
+        "type": "Signature*"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "stop_activation",
+    "type": "function",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "name": "claim_split",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "get_splits_id_of",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "address",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "res_len",
+        "type": "felt"
+      },
+      {
+        "name": "res",
+        "type": "felt*"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "split_of",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "res",
+        "type": "Split"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "inheritance_status",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "status",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "total_splits",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "res",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_activation_period",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "res",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_all_splits",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "splits_len",
+        "type": "felt"
+      },
+      {
+        "name": "splits",
+        "type": "Split*"
+      }
+    ],
+    "stateMutability": "view"
+  }
+]

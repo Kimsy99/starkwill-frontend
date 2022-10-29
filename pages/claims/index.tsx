@@ -6,7 +6,7 @@ import List from '../../src/components/list'
 import VoteList from '../../src/components/list/vote'
 import Heading from '../../src/components/Text/heading.component'
 
-const VoteHome: NextPage = () => {
+const ClaimsHome: NextPage = () => {
     return (
       <div>
         <Head>
@@ -30,5 +30,5 @@ const VoteHome: NextPage = () => {
     )
   }
   
-  export default VoteHome
+  export default ClaimsHome
   

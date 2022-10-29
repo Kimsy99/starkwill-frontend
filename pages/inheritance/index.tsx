@@ -1,3 +1,4 @@
+import { useStarknetCall } from '@starknet-react/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -6,9 +7,18 @@ import { SectionTitle } from '../../src/components/forms/sectionTitle.component'
 import List from '../../src/components/list'
 import Modal from '../../src/components/modal/index.component'
 import Heading from '../../src/components/Text/heading.component'
+import { useWillContract } from '../../src/hooks/core'
 
 const InheritanceHome: NextPage = () => {
     const [open, setOpen] = React.useState(false)
+    const { contract: willContract } = useWillContract();
+    console.log("willCOntract: ", willContract)
+    const {data, loading, error, refresh} = useStarknetCall({
+      contract: willContract,
+      method: "get_all_splits",
+      args: [],
+      options: { watch: false }
+    })
     function closeModal() {
       setOpen(false)
     }
@@ -16,6 +26,8 @@ const InheritanceHome: NextPage = () => {
     function openModal() {
       setOpen(true)
     }
+    if (loading) return <span>Loading...</span>
+    if (error) return <span>Error: {error}</span>
     return (
       <div>
         <Head>
@@ -41,7 +53,11 @@ const InheritanceHome: NextPage = () => {
           <SectionTitle title={'List of inheritance'}/>
           <SectionDescription desc="Disclaimer: ...."/>
         </div>
-        <List/>
+        <List column={["No. of beneficiaries", "Beneficiaries", "Token", "Percentage (total)"]} data={data} keys={["beneficiary", "token", "expected_amount"]}/>
+        {/* {
+          data !== null && data !== undefined && (
+          ) && console.log("data: ", data)
+        } */}
         </main>
   
        

@@ -10,7 +10,8 @@ import {
   InboxIcon,
   UsersIcon,
   XMarkIcon,
-  HandRaisedIcon
+  HandRaisedIcon,
+  CurrencyDollarIcon
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { useAccount,useConnectors } from '@starknet-react/core'
@@ -21,6 +22,7 @@ const navigation = [
   { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
   { name: 'Inheritance', href: '/inheritance', icon: UsersIcon, current: false },
   { name: 'Vote', href: '/vote', icon: HandRaisedIcon, current: false },
+  { name: 'Claims', href: '/claims', icon: CurrencyDollarIcon, current: false },
 ]
 const userNavigation = [
   { name: 'Disconnect'}
