@@ -1,27 +1,5 @@
 [
     {
-        "name": "UninitializedSplit",
-        "size": 3,
-        "type": "struct",
-        "members": [
-            {
-            "name": "beneficiary",
-            "type": "felt",
-            "offset": 0
-            },
-            {
-            "name": "token",
-            "type": "felt",
-            "offset": 1
-            },
-            {
-            "name": "percentage",
-            "type": "felt",
-            "offset": 2
-            }
-        ]
-    },
-    {
       "data": [
         {
           "name": "will_contract_address",

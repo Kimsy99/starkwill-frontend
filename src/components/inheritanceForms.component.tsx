@@ -86,30 +86,28 @@ export default function InheritanceForm() {
   }
   const {contract} = useWillContract()
   
-  const {invoke: executeStarkent} = useStarknetInvoke({
-    contract: contract,
-    method: 'create_will',
-  })
-  // [
-  //       1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
-  //       {
-  //         beneficiary: 0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
-  //         token: 0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
-  //         percentage: 50
-  //       }
-  //     ]
-  // const {execute: executeStarkent} = useStarknetExecute({calls: {
-  //   contractAddress: "0x01f51fca15fe380093c6cb81146767cbc2e109e1c9e20940bf9ba7fb9d4e38b0",
-  //   entrypoint: 'create_will',
-  //   calldata: [
-  //     1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
-  //     {
-  //       beneficiary: 0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
-  //       token: 0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
-  //       percentage: 50
-  //     }
-  //   ]
-  // }})
+  // const {invoke: executeStarkent} = useStarknetInvoke({
+  //   contract: contract,
+  //   method: 'create_will',
+  // })
+
+  const {execute: executeStarkent} = useStarknetExecute({calls: {
+    contractAddress: "0x01f51fca15fe380093c6cb81146767cbc2e109e1c9e20940bf9ba7fb9d4e38b0",
+    entrypoint: "create_will",
+    calldata:["9",
+    BigInt("0x06D362f8828cAEDb6953D698dCEc423a3EDC716279aB538172a633b4b5770059", 16).toString(),
+      "1",
+      "2",
+      "1",
+      BigInt("0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0", 16).toString(),
+      "1",
+      
+      BigInt("0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0", 16).toString(), 
+      BigInt("0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9", 16).toString(), 
+        "50"
+      
+    ]
+  }})
     return (
       <form className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -120,7 +118,7 @@ export default function InheritanceForm() {
             </div>
             <InputFieldWrapper label="Asset Type">
             <div className="mt-1 sm:col-span-2 sm:mt-0">
-                  <Dropdown id="beneficiary-address" name="beneficiary" lists={["USDC", "ETH"]} />
+                  <Dropdown id="beneficiary-address" name="beneficiary" lists={["DAI", "ETH"]} />
                 </div>
             </InputFieldWrapper>
             <div className="sm:col-span-6">
@@ -146,14 +144,15 @@ export default function InheritanceForm() {
             <div
               // type="submit"
               className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              onClick={() => executeStarkent({args: [[
-                1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
-                {
-                  beneficiary: 0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
-                  token: 0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
-                  percentage: 50
-                }
-              ]]})}
+              // onClick={() => executeStarkent({args: [[
+              //   1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
+                
+              //     0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
+              //     0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
+              //     50
+                
+              // ]]})}
+              onClick={() => executeStarkent()}
             >
               Submit
             </div>
