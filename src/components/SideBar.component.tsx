@@ -217,8 +217,8 @@ export default function SideBar({children}: SideBarProps) {
                   <div>
                     
                       {
-                        status === 'disconnected' ? (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap' onClick={() => connect(connectors[0])}>
-                            Connect {connectors[0].id()}
+                        status === 'disconnected' ? (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap' onClick={() => connect(connectors[1])}>
+                            Connect {connectors[1].id()}
                         </div>) : 
                         (<Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none"><div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap'>
                         {short}

@@ -1,6 +1,6 @@
 type HeadingProps = {
     heading: string,
-    children: JSX.Element
+    children: JSX.Element | undefined
 }
 
 export default function Heading({heading, children}: HeadingProps) {

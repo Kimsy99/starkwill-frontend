@@ -1,5 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { SectionDescription } from '../../src/components/forms/sectionDescription.component'
+import { SectionTitle } from '../../src/components/forms/sectionTitle.component'
+import List from '../../src/components/list'
+import Heading from '../../src/components/Text/heading.component'
 
 const InheritanceHome: NextPage = () => {
     return (
@@ -12,8 +16,12 @@ const InheritanceHome: NextPage = () => {
   
         <main>
           {/* <SideBar/> */}
-          
-          <h1>+asdfasdf</h1>
+          <Heading heading="Vote" children={undefined}/>
+          <div className="">
+            <SectionTitle title={'List of votes'}/>
+            <SectionDescription desc="Disclaimer: ...."/>
+          </div>
+          <List/>
         </main>
   
        

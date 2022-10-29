@@ -4,6 +4,8 @@ import { SectionDescription } from "./forms/sectionDescription.component";
 import { SectionTitle } from "./forms/sectionTitle.component";
 import { Dropdown } from "./forms/dropdown.component";
 import React from "react";
+import { useContract, useStarknetExecute, useStarknetInvoke } from "@starknet-react/core";
+import { useWillContract } from "../hooks/core";
 
 type BeneficiaryInfo = {
   address: string;
@@ -22,6 +24,9 @@ type OnChangeProps = {
 }
 function BeneficiaryFormList({info, index, onChange, addBeneficiaries, removeBeneficiaries}: BeneficiaryProps)  {
   console.log("info: ", info)
+
+  
+
   return(
   <div className=" grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-7 mt-4" key={index}>
   <div className="sm:col-span-3">
@@ -62,6 +67,7 @@ function BeneficiaryFormList({info, index, onChange, addBeneficiaries, removeBen
 export default function InheritanceForm() {
   const [beneficiaries, setBeneficiaries] = React.useState([{address: "", proportion: 0}])
   const addBenficiaries = () => setBeneficiaries([...beneficiaries, {address: "", proportion: 0}])
+
   const onChange = (i: any, e: any): void => {
     let tempBeneficiaries = [...beneficiaries];
     const index: keyof BeneficiaryInfo = i;
@@ -78,6 +84,32 @@ export default function InheritanceForm() {
     tempBeneficiaries.splice(i,1)
     setBeneficiaries(tempBeneficiaries)
   }
+  const {contract} = useWillContract()
+  
+  const {invoke: executeStarkent} = useStarknetInvoke({
+    contract: contract,
+    method: 'create_will',
+  })
+  // [
+  //       1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
+  //       {
+  //         beneficiary: 0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
+  //         token: 0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
+  //         percentage: 50
+  //       }
+  //     ]
+  // const {execute: executeStarkent} = useStarknetExecute({calls: {
+  //   contractAddress: "0x01f51fca15fe380093c6cb81146767cbc2e109e1c9e20940bf9ba7fb9d4e38b0",
+  //   entrypoint: 'create_will',
+  //   calldata: [
+  //     1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
+  //     {
+  //       beneficiary: 0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
+  //       token: 0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
+  //       percentage: 50
+  //     }
+  //   ]
+  // }})
     return (
       <form className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -111,12 +143,20 @@ export default function InheritanceForm() {
             >
               Cancel
             </button>
-            <button
-              type="submit"
+            <div
+              // type="submit"
               className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              onClick={() => executeStarkent({args: [[
+                1,2,1,0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0,1,
+                {
+                  beneficiary: 0x07fce9f7943a788007bfe4097fe17fcbb141fa67a36cb4748d2cba6acb4808b0, 
+                  token: 0x03e85bfbb8e2a42b7bead9e88e9a1b19dbccf661471061807292120462396ec9, 
+                  percentage: 50
+                }
+              ]]})}
             >
               Submit
-            </button>
+            </div>
           </div>
         </div>
       </form>

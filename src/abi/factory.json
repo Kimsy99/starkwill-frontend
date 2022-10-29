@@ -1,0 +1,82 @@
+[
+    {
+        "name": "UninitializedSplit",
+        "size": 3,
+        "type": "struct",
+        "members": [
+            {
+            "name": "beneficiary",
+            "type": "felt",
+            "offset": 0
+            },
+            {
+            "name": "token",
+            "type": "felt",
+            "offset": 1
+            },
+            {
+            "name": "percentage",
+            "type": "felt",
+            "offset": 2
+            }
+        ]
+    },
+    {
+      "data": [
+        {
+          "name": "will_contract_address",
+          "type": "felt"
+        },
+        {
+          "name": "owner",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "will_creation",
+      "type": "event"
+    },
+    {
+      "name": "constructor",
+      "type": "constructor",
+      "inputs": [
+        {
+          "name": "_will_class_hash",
+          "type": "felt"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "create_will",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "constructor_calldata_len",
+          "type": "felt"
+        },
+        {
+          "name": "constructor_calldata",
+          "type": "felt*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "will_contract_address",
+          "type": "felt"
+        }
+      ]
+    },
+    {
+      "name": "get_will_class",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "class_hash",
+          "type": "felt"
+        }
+      ],
+      "stateMutability": "view"
+    }
+  ]
