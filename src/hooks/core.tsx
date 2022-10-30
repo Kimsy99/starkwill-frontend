@@ -5,7 +5,7 @@ import CoreABI from "../abi/core.json"
 
 export function useWillContract() {
     return useContract({
-        address: "0x01ad0df75c076e5433f1ee9b336634d201f651c15c583a0b50ce15ebbd9e13b9",
+        address: "0x057791be782275e83b3986d0baced52a334de5f4b94eb507b542c6535f23204c",
         abi: CoreABI as Abi,
     })
 }
