@@ -14,7 +14,7 @@ import {
   CurrencyDollarIcon
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { useAccount,useConnectors } from '@starknet-react/core'
+import { useAccount, useConnectors } from '@starknet-react/core'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -25,7 +25,7 @@ const navigation = [
   { name: 'Claims', href: '/claims', icon: CurrencyDollarIcon, current: false },
 ]
 const userNavigation = [
-  { name: 'Disconnect'}
+  { name: 'Disconnect' }
 ]
 
 function classNames(...classes: any) {
@@ -33,9 +33,9 @@ function classNames(...classes: any) {
 }
 
 type SideBarProps = {
-    children: JSX.Element
+  children: JSX.Element
 }
-export default function SideBar({children}: SideBarProps) {
+export default function SideBar({ children }: SideBarProps) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { account, address, status } = useAccount()
@@ -102,9 +102,9 @@ export default function SideBar({children}: SideBarProps) {
                     </div>
                   </Transition.Child>
                   <div className="flex flex-shrink-0 items-center px-4">
-                  <div className="flex h-16 flex-shrink-0 items-center px-4 text-white font-bold">
-                    StarkWill
-                  </div>
+                    <div className="flex h-16 flex-shrink-0 items-center px-4 text-white font-bold">
+                      StarkWill
+                    </div>
                   </div>
                   <div className="mt-5 h-0 flex-1 overflow-y-auto">
                     <nav className="space-y-1 px-2">
@@ -118,26 +118,27 @@ export default function SideBar({children}: SideBarProps) {
                         console.log(item.href + ": " + ariaCurrent)
                         return (
                           <Link href={item.href} key={index}>
-                          <a
-                            key={item.name}
-                            className={classNames(
-                              ariaCurrent
-                                ? 'bg-gray-900 text-white'
-                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                              'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                            )}
-                          >
-                            <item.icon
+                            <a
+                              key={item.name}
                               className={classNames(
-                                ariaCurrent ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                                'mr-4 flex-shrink-0 h-6 w-6'
+                                ariaCurrent
+                                  ? 'bg-gray-900 text-white'
+                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                               )}
-                              aria-hidden="true"
-                            />
-                            {item.name}
-                          </a>
+                            >
+                              <item.icon
+                                className={classNames(
+                                  ariaCurrent ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                                  'mr-4 flex-shrink-0 h-6 w-6'
+                                )}
+                                aria-hidden="true"
+                              />
+                              {item.name}
+                            </a>
                           </Link>
-                      )})}
+                        )
+                      })}
                     </nav>
                   </div>
                 </Dialog.Panel>
@@ -160,33 +161,34 @@ export default function SideBar({children}: SideBarProps) {
               <nav className="flex-1 space-y-1 px-2 py-4">
                 {navigation.map((item, index) => {
                   const ariaCurrent =
-                  router.asPath.includes(item.href) && item.href !== "/"
-                    ? true
-                    : router.pathname === item.href
+                    router.asPath.includes(item.href) && item.href !== "/"
                       ? true
-                      : false;
+                      : router.pathname === item.href
+                        ? true
+                        : false;
                   return (
-                  
+
                     <Link href={item.href} key={index}>
-                    <a
-                      key={item.name}
-                      
-                      className={classNames(
-                        ariaCurrent? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                      )}
-                    >
-                      <item.icon
+                      <a
+                        key={item.name}
+
                         className={classNames(
-                          ariaCurrent ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                          'mr-3 flex-shrink-0 h-6 w-6'
+                          ariaCurrent ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                         )}
-                        aria-hidden="true"
-                      />
-                      {item.name}
-                    </a>
-                      </Link>
-                )})}
+                      >
+                        <item.icon
+                          className={classNames(
+                            ariaCurrent ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                            'mr-3 flex-shrink-0 h-6 w-6'
+                          )}
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </a>
+                    </Link>
+                  )
+                })}
               </nav>
             </div>
           </div>
@@ -203,38 +205,39 @@ export default function SideBar({children}: SideBarProps) {
             </button>
             <div className="flex flex-1 justify-between px-4">
               <div className="flex flex-1">
-               
+
               </div>
               <div className="ml-4 flex items-center md:ml-6">
-                <button
+                {/* <button
                   type="button"
                   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </button> */}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    
-                      {
-                        status === 'disconnected' ? (<div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap' onClick={() => connect(connectors[1])}>
-                            Connect {connectors[1].id()}
-                        </div>) : 
+
+                    {
+                      status === 'disconnected' ? (
+                        <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none"><div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap'>
+                          Connect
+                        </div> <span className="sr-only">Open user menu</span></Menu.Button>) :
                         (<Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none"><div className='font-medium flex hover:ring-2 focus:ring-2 items-center justify-center gap-2 rounded-xl cursor-pointer text-slate-50 bg-gray-800  px-3 h-[36px] text-sm font-semibold border-none shadow-md whitespace-nowrap'>
-                        {short}
+                          {short}
                         </div> <span className="sr-only">Open user menu</span></Menu.Button>
                         )
-                      }
-                      
-                    
-                      {/* <img
+                    }
+
+
+                    {/* <img
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       /> */}
-                    
+
                   </div>
                   <Transition
                     as={Fragment}
@@ -246,11 +249,39 @@ export default function SideBar({children}: SideBarProps) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {userNavigation.map((item) => (
+                      {
+                        status === 'disconnected' && (
+                          <>
+                            <Menu.Item key="">
+                              <div
+                                onClick={() => connect(connectors[0])}
+                                className={classNames(
+                                  'block px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {connectors[0].id()}
+                              </div>
+
+                            </Menu.Item>
+                            <Menu.Item key="">
+                              <div
+                                onClick={() => connect(connectors[1])}
+                                className={classNames(
+                                  'block px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {connectors[1].id()}
+                              </div>
+
+                            </Menu.Item>
+                          </>
+                        )
+                      }
+                      {status !== 'disconnected' && userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
                             <div
-                            onClick={disconnect}
+                              onClick={disconnect}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
@@ -270,7 +301,7 @@ export default function SideBar({children}: SideBarProps) {
 
           <main className="flex-1">
             <div className="py-6">
-             
+
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                 {/* Replace with your content */}
                 {children}

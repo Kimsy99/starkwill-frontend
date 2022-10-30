@@ -10,7 +10,7 @@ import { useWillContract } from '../../src/hooks/core'
 
 const VoteHome: NextPage = () => {
   const { contract: willContract } = useWillContract();
-  const {data, loading, error, refresh} = useStarknetCall({
+  const { data, loading, error, refresh } = useStarknetCall({
     contract: willContract,
     method: "get_all_splits",
     args: [],
@@ -24,21 +24,18 @@ const VoteHome: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-    <main>
+      <main>
         {/* <SideBar/> */}
-        <Heading heading="Vote" children={undefined}/>
+        <Heading heading="Vote"><></></Heading>
         <div className="">
-          <SectionTitle title={'List of votes'}/>
-          <SectionDescription desc="Disclaimer: ...."/>
+          <SectionTitle title={'List of votes'} />
+          <SectionDescription desc="Disclaimer: ...." />
         </div>
-        <VoteList/>
-        <List column={["No. of beneficiaries", "Beneficiaries", "Token", "Percentage (total)"]} data={data} keys={["beneficiary", "token", "expected_amount"]}/>
+        <VoteList />
+        <List column={["No. of beneficiaries", "Beneficiaries", "Token", "Percentage (total)"]} data={data} keys={["beneficiary", "token", "expected_amount"]} />
       </main>
-
-      
     </div>
   )
 }
-  
-  export default VoteHome
-  
+
+export default VoteHome

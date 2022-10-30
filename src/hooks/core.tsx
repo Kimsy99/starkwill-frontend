@@ -1,6 +1,6 @@
 
 import { useContract } from "@starknet-react/core";
-import {Abi} from "starknet"
+import { Abi } from "starknet"
 import CoreABI from "../abi/core.json"
 
 export function useWillContract() {
