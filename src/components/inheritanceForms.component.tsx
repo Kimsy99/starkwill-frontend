@@ -116,7 +116,6 @@ export default function InheritanceForm() {
     console.log(e.target.value)
   }
   const addBeneficiaries = () => {
-    console.log("add")
     setBeneficiaries([...beneficiaries, { address: "", proportion: 0 }])
   }
   const removeBeneficiaries = (i: any) => {

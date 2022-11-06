@@ -31,7 +31,6 @@ const VoteHome: NextPage = () => {
           <SectionTitle title={'List of votes'} />
           <SectionDescription desc="Disclaimer: ...." />
         </div>
-        <VoteList />
         <List column={["No. of beneficiaries", "Beneficiaries", "Token", "Percentage (total)"]} data={data} keys={["beneficiary", "token", "expected_amount"]} />
       </main>
     </div>

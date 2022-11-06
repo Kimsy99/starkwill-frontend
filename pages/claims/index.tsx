@@ -1,12 +1,46 @@
+import { useAccount, useStarknetCall } from '@starknet-react/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import { SectionDescription } from '../../src/components/forms/sectionDescription.component'
 import { SectionTitle } from '../../src/components/forms/sectionTitle.component'
 import List from '../../src/components/list'
+import ClaimList from '../../src/components/list/claim'
 import VoteList from '../../src/components/list/vote'
 import Heading from '../../src/components/Text/heading.component'
+import { useWillContract } from '../../src/hooks/core'
 
 const ClaimsHome: NextPage = () => {
+  const [id, setId] = useState<number[]>([])
+  const { contract: willContract } = useWillContract();
+  const { account, address, status } = useAccount()
+  const { data: getId, loading: loadSplitId, error: errorSplitId } = useStarknetCall({
+    contract: willContract,
+    method: "get_splits_id_of",
+    args: [address],
+    options: { watch: false }
+  })
+
+  useEffect(() => {
+    async function asyncFunction() {
+      if (getId) {
+        const getIdTransform = getId.map(id => parseInt(id.toString(16))).flat()
+        setId(getIdTransform)
+      }
+    }
+    asyncFunction();
+  }, [getId])
+
+  const { data: splits, loading: loadSplits, error: errorSplits } = useStarknetCall({
+    contract: willContract,
+    method: "split_of",
+    args: [1],
+    options: { watch: false }
+  })
+  // if (getId) {
+  //   console.log("id: ", getId[0].toString(16))
+  // }
+  if (loadSplitId) return <div>Loading...</div>
   return (
     <div>
       <Head>
@@ -17,12 +51,18 @@ const ClaimsHome: NextPage = () => {
 
       <main>
         {/* <SideBar/> */}
-        <Heading heading="Vote"><></></Heading>
+        <Heading heading="Claims"><></></Heading>
         <div className="">
-          <SectionTitle title={'List of votes'} />
+          <SectionTitle title={'List of claims'} />
           <SectionDescription desc="Disclaimer: ...." />
         </div>
-        <VoteList />
+        {/* {
+          getId && getId.map(id => { parseInt(id.toString(16)) })
+        } */}
+        {/* <pre>{id}</pre */}
+        <ClaimList list={id} />
+        {/* <pre>{JSON.stringify(getId)}</pre> */}
+        {/* <pre>{JSON.stringify(splits)}</pre> */}
       </main>
     </div>
   )
